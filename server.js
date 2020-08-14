@@ -1,6 +1,6 @@
 const path = require("path");
 const WebSocket = require('ws');
-const server = new WebSocket.Server({port: 8081});
+const server = new WebSocket.Server({port: 8082});
 
 console.log('serer started');
 

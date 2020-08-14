@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import './App.css';
 
-const ws = new WebSocket(`ws://${process.env.IP}:8081`);
+const ws = new WebSocket(`ws://${process.env.IP}:8082`);
 function App() {
   console.log('erer', process.env.IP);
   useEffect(() => {

@@ -1,0 +1,78 @@
+serer started
+serer started
+events.js:187
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: listen EADDRINUSE: address already in use :::8081
+    at Server.setupListenHandle [as _listen2] (net.js:1301:14)
+    at listenInCluster (net.js:1349:12)
+    at Server.listen (net.js:1437:7)
+    at new WebSocketServer (/Users/a_kiedis/Documents/projects/scrum-poker/node_modules/ws/lib/websocket-server.js:74:20)
+    at Object.<anonymous> (/Users/a_kiedis/Documents/projects/scrum-poker/server.js:3:16)
+    at Module._compile (internal/modules/cjs/loader.js:959:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:995:10)
+    at Module.load (internal/modules/cjs/loader.js:815:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:727:14)
+    at Function.Module.runMain (internal/modules/cjs/loader.js:1047:10)
+Emitted 'error' event on WebSocketServer instance at:
+    at Server.emit (events.js:210:5)
+    at emitErrorNT (net.js:1328:8)
+    at processTicksAndRejections (internal/process/task_queues.js:80:21) {
+  code: 'EADDRINUSE',
+  errno: 'EADDRINUSE',
+  syscall: 'listen',
+  address: '::',
+  port: 8081
+}
+serer started
+events.js:187
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: listen EADDRINUSE: address already in use :::8081
+    at Server.setupListenHandle [as _listen2] (net.js:1301:14)
+    at listenInCluster (net.js:1349:12)
+    at Server.listen (net.js:1437:7)
+    at new WebSocketServer (/Users/a_kiedis/Documents/projects/scrum-poker/node_modules/ws/lib/websocket-server.js:74:20)
+    at Object.<anonymous> (/Users/a_kiedis/Documents/projects/scrum-poker/server.js:3:16)
+    at Module._compile (internal/modules/cjs/loader.js:959:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:995:10)
+    at Module.load (internal/modules/cjs/loader.js:815:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:727:14)
+    at Function.Module.runMain (internal/modules/cjs/loader.js:1047:10)
+Emitted 'error' event on WebSocketServer instance at:
+    at Server.emit (events.js:210:5)
+    at emitErrorNT (net.js:1328:8)
+    at processTicksAndRejections (internal/process/task_queues.js:80:21) {
+  code: 'EADDRINUSE',
+  errno: 'EADDRINUSE',
+  syscall: 'listen',
+  address: '::',
+  port: 8081
+}
+serer started
+nohup: help: No such file or directory
+kill: illegal process id: all
+usage: kill [-s signal_name] pid ...
+       kill -l [exit_status]
+       kill -signal_name pid ...
+       kill -signal_number pid ...
+ws connection
+ws connection
+ws connection
+nohup: list: No such file or directory
+  PID TTY           TIME CMD
+14827 ttys000    0:00.04 /Applications/iTerm.app/Contents/MacOS/iTerm2 --server login -fp a_kiedis
+14829 ttys000    0:00.24 -zsh
+21109 ttys000    0:00.29 npm  
+21110 ttys000    0:00.06 node /Users/a_kiedis/Documents/projects/scrum-poker/node_modules/.bin/react-scripts start
+21111 ttys000    0:08.82 node /Users/a_kiedis/Documents/projects/scrum-poker/node_modules/react-scripts/scripts/start.js
+21112 ttys000    0:06.00 /usr/local/bin/node --max-old-space-size=2048 /Users/a_kiedis/Documents/projects/scrum-poker/node_modules/fork-ts-checker-webpack-plugin/lib/service.js
+14999 ttys001    0:00.04 /Applications/iTerm.app/Contents/MacOS/iTerm2 --server login -fp a_kiedis
+15001 ttys001    0:00.50 -zsh
+20327 ttys001    0:00.11 node server.js
+20551 ttys001    0:00.12 node server.js
+nohup: hel: No such file or directory
+nohup: help: No such file or directory
+ws connection
