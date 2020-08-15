@@ -11,8 +11,6 @@ server.on('connection', ws => {
     ws.on('message', message => {
         const data = JSON.parse(message);
         console.log('message', data);
-        console.log('rooms', rooms);
-        
         
         const isRoomExists = data.room in rooms;
         const isUserExist = isRoomExists && data.user in rooms[data.room];
@@ -50,16 +48,17 @@ function addUser(msg, isRoomExists) {
         user: msg.user,
         rate: msg.rate,
     };
+    console.log(msg.user, 'added to room', msg.room);
 }
 
 function deleteUser(msg, isUserExist) {
     if (isUserExist) {
         if (Object.keys(rooms[msg.room]).length === 1) {
             delete rooms[msg.room];
-            console.log('Room deleted', msg.room);
+            console.log(msg.room, 'room deleted');
         } else {
             delete rooms[msg.room][msg.user];
-            console.log('User deleted', msg.room, msg.user);
+            console.log(msg.user, 'deleted from room', msg.room);
         }
     }
 }
@@ -67,6 +66,7 @@ function deleteUser(msg, isUserExist) {
 function setRate(msg, isUserExist) {
     if (isUserExist) {
         rooms[msg.room][msg.user].rate = msg.rate;
+        console.log(msg.user, 'at room', msg.room, 'set rate', msg.rate);
     }
 }
 

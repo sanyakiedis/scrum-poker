@@ -1,0 +1,34 @@
+.poker {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    max-width: 1024px;
+}
+
+.user-cards {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.slots {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 25px;
+}
+
+.slot {
+    position: relative;
+    max-width: 92px;
+}
+
+.slot > p {
+    margin: 0;
+    width: 100%;
+    font-size: 12px;
+}

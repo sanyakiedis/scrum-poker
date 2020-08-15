@@ -25,7 +25,6 @@ export const Login: React.FC<LoginProps> = ({ onLogin, name }) => {
   }
 
   const onLoginHandler = () => {
-    console.log(room, user);
     onLogin({ room, user });
   }
 

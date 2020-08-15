@@ -1,0 +1,89 @@
+.card {
+    position: relative;
+    width: 80px;
+    height: 120px;
+    background-color: #ffffff;
+    color: #000000;
+    font-size: 32px;
+    line-height: 120px;
+    font-weight: 800;
+    margin: 4px;
+    border-radius: 10px;
+    border: 2px solid #000000;
+    pointer-events: none;
+    box-shadow: 2px 2px 9px rgba(255, 255, 255, 0.12);
+    transform: translateY(0);
+    transition: background .2s, transform .2s;
+}
+
+.card.pointer {
+    pointer-events: all;
+    user-select: none;
+    cursor: pointer;
+}
+
+.card::after,
+.card::before {
+    position: absolute;
+    font-size: 18px;
+    line-height: 18px;
+    color: #e40000;
+}
+
+.card::before {
+    left: 4px;
+    top: 4px;
+    text-shadow: 1px 1px #aaaaaa;
+}
+
+.card::after {
+    right: 4px;
+    bottom: 4px;
+    transform: rotate(180deg);
+    text-shadow: -1px -1px #aaaaaa;
+}
+
+.card.hearts::after,
+.card.hearts::before {
+    content: '♥';
+}
+
+.card.tiles::after,
+.card.tiles::before {
+    content: '♦';
+}
+
+.card.clovers::after,
+.card.clovers::before {
+    content: '♣';
+    color: #000000;
+}
+
+.card.pikes::after,
+.card.pikes::before {
+    content: '♠';
+    color: #000000;
+}
+
+.card.selected {
+    transform: translateY(-15px);
+}
+
+.card.unrated {
+    background: transparent;
+    color: transparent;
+    border: 2px solid #ffffff;
+    opacity: 0.1;
+    box-shadow: 2px 2px 9px rgba(255, 255, 255, 0);
+}
+
+.card.hidden:not(.unrated) {
+    color: transparent;
+    background-image: url('/back.png');
+    background-size: cover;
+}
+
+.card.hidden:not(.unrated)::before,
+.card.hidden:not(.unrated)::after {
+    content: none;
+}

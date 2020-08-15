@@ -1,37 +1,33 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import { Header } from './../Header';
 import { Login } from './../Login';
+import { Poker } from './../Poker';
+import { Rooms } from './../../api';
 import './App.css';
-
-
-// function getMeta() {
-    // return {
-        // rooms: Object.keys(rooms).length,
-        // users: Object.values(rooms).reduce((acc, users) => acc + users.length, 0),
-    // }
-// }
-
-interface User {
-  user: string;
-  rate: null | number;
-}
-
-interface Room {
-  [detail: string]: User;
-}
 
 const ws = new WebSocket(`ws://localhost:8082`);
 
 const getUserName = () => {
-  const fromStorage = localStorage.getItem('user');
-  return typeof fromStorage ? fromStorage as string : '';
+  const userSession = sessionStorage.getItem('user');
+  if (userSession) {
+    return userSession;
+  }
+  const fromLocal = localStorage.getItem('user');
+  return typeof fromLocal ? fromLocal as string : '';
+}
+
+const getRoom = () => {
+  const roomSession = sessionStorage.getItem('room');
+  return roomSession || null;
 }
 // const ws = new WebSocket(`ws://api.gogodev.ru:8082`);
 export const App: React.FC<{}> = () => {
   const [isOnline, setOnline] = useState<boolean>(false);
-  const [rooms, setRooms] = useState<{ [detail: string]: Room }>({});
-  const [room, setRoom] = useState<string | null>(null);
+  const [rooms, setRooms] = useState<Rooms>({});
+  const [room, setRoom] = useState<string | null>(getRoom());
   const [user, setUser] = useState<string>(getUserName());
+  const [rate, setRate] = useState<string | null>(null);
+
   const isAuth = useCallback(() => room !== null && user, [room, user]);
 
   useEffect(() => {
@@ -40,29 +36,32 @@ export const App: React.FC<{}> = () => {
     };
 
     ws.onopen = () => {
-      setOnline(true);
-      const roomSession = sessionStorage.getItem('room');
-      const userSession = sessionStorage.getItem('user');
-      
-      if (userSession == null || roomSession == null) {
-        return;
+      setOnline(true);    
+      if (room !== null && user !== '') {
+        
+        ws.send(JSON.stringify({room, user, rate: null, command: 'addUser'}));
       }
+    };
 
-      setRoom(roomSession);
-      setUser(userSession);
+    ws.onclose = () => {
+      setOnline(false);
     };
   });
 
-  const onLogin = useCallback(({ room, user }) => {
-    if (room in rooms && user in rooms[room]) {
+  const currentRoom = useCallback(() => {    
+    return room && room in rooms? rooms[room]: {};
+  }, [rooms, room]);
+
+  const onLogin = useCallback((login) => {
+    if (login.room in rooms && login.user in rooms[login.room]) {
       return;
     }
-    setRoom(room);
-    setUser(user);
-    sessionStorage.setItem('room', room);
-    sessionStorage.setItem('user', user);
-    localStorage.setItem('user', user);
-    ws.send(JSON.stringify({room, user, rate: null, command: 'addUser'}));
+    setRoom(login.room);
+    setUser(login.user);
+    sessionStorage.setItem('room', login.room);
+    sessionStorage.setItem('user', login.user);
+    localStorage.setItem('user', login.user);
+    ws.send(JSON.stringify({...login, rate: '', command: 'addUser'}));
   }, [rooms]);
 
   const onLogout = useCallback(() => {    
@@ -81,13 +80,19 @@ export const App: React.FC<{}> = () => {
     )
   }, [rooms]);
 
+  const onRate = useCallback((r) => {
+    const prepared = r === rate ? null : r;
+    setRate(prepared);
+    ws.send(JSON.stringify({room, user, rate: prepared, command: 'setRate'}));
+  }, [room, user, rate]);
+
 
   return (
     <div className="app">
       <Header online={isOnline} room={room} user={user} onLogout={onLogout} />
       <div className='workspace'>
         {isOnline ? 
-        !isAuth() ? <Login name={user} onLogin={onLogin} /> : null
+        !isAuth() ? <Login name={user} onLogin={onLogin} /> : <Poker onRate={onRate} rate={rate} users={currentRoom()} />
         : <p>We have a problems at server</p>
         }
       </div>
