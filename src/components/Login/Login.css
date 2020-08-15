@@ -1,0 +1,44 @@
+.login {
+    border: 1px solid #ffffff22;
+    padding: 36px;
+    text-align: center;
+}
+
+.login > * {
+    display: block;
+}
+
+.login > input {
+    color: #ffffff;
+    border: 1px solid #ffffffaa;
+    font-size: 18px;
+    padding: 0 8px;
+    margin: 0 0 16px;
+    height: 32px;
+    outline: none;
+    background: transparent;
+}
+
+.login > input:focus {
+    border-color: #ffffff;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.login > button {
+    width: 100%;
+    background: transparent;
+    cursor: pointer;
+    font-size: 18px;
+    height: 32px;
+    border: 1px solid #ffffffaa;
+    color: #ffffff;
+}

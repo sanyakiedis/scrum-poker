@@ -1,0 +1,55 @@
+.header {
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #ffffff22;
+    max-width: 1024px;
+    padding: 0 16px;
+    margin: 0 auto;
+}
+
+.header h1 {
+    margin: 0;
+    font-size: 18px;
+    color: #ffffff;
+}
+
+.controls {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.controls > * {
+    margin-left: 16px !important;
+}
+
+.about-user {
+    color: #ffffff;
+    margin: 0;
+}
+
+.status {
+    position: relative;
+    color: #ffffff;
+    padding-left: 16px;
+}
+
+.status::before {
+    content: '';
+    position: absolute;
+    top: 7px;
+    left: 0;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+}
+
+.status.online::before {
+    background-color: #00ff00;
+}
+
+.status.offline::before {
+    background-color: #ff0000;
+}
