@@ -4,6 +4,11 @@
     text-align: center;
 }
 
+.login img {
+    width: 64px;
+    margin: 0 auto 36px;
+}
+
 .login > * {
     display: block;
 }

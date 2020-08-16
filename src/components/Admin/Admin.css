@@ -1,0 +1,28 @@
+.admin {
+    position: absolute;
+    right: 0;
+    top: 36px;
+    list-style-type: none;
+    padding: 16px;
+    background-color: #00000044;
+    border: 1px solid #ffffff22;
+    border-right: none;
+    text-align: right;
+}
+
+.admin button {
+    background: none;
+    border: none;
+    border-radius: 5px;
+    color: #ffffff;
+    cursor: pointer;
+    margin-left: 8px;
+    margin-bottom: 4px;
+}
+
+.admin li {
+    display: flex;
+    justify-content: flex-end;
+    align-items: baseline;
+    font-size: 14px;
+}

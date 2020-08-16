@@ -30,6 +30,8 @@ export const Login: React.FC<LoginProps> = ({ onLogin, name }) => {
 
   return (
     <div className='login'>
+      <img src="/casino.png" alt="Login"/>
+      <p>Scrum Poker</p>
       <input type="text" placeholder='Name' value={user} onKeyPress={keyPressHandler} onChange={setUserHandler} />
       <input type="number" placeholder='Room' value={room} onKeyPress={keyPressHandler} onChange={setRoomHandler} />
       <button onClick={onLoginHandler}>Let's go!</button>

@@ -1,16 +1,17 @@
 const WebSocket = require('ws');
-const server = new WebSocket.Server({port: 8082});
+const server = new WebSocket.Server({port: 9000});
 
 console.log('server started');
 
 const rooms = {};
 
 server.on('connection', ws => {
-    console.log('ws connection', server.clients.size);
+    console.log('New connection! Counter:', server.clients.size);
+    console.log('-----------------');
     
     ws.on('message', message => {
         const data = JSON.parse(message);
-        console.log('message', data);
+        console.log('New message:', data);
         
         const isRoomExists = data.room in rooms;
         const isUserExist = isRoomExists && data.user in rooms[data.room];

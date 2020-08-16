@@ -6,9 +6,11 @@ interface HeaderProps {
     room: string | null;
     user: string;
     onLogout: () => void;
+    onConsole: () => void;
+    onSettings: () => void;
 }
 
-export const Header: React.FC<HeaderProps> = ({ online, user, room, onLogout }) => {
+export const Header: React.FC<HeaderProps> = ({ online, user, room, onLogout, onConsole, onSettings }) => {
   return (
     <header className="header">
         <h1>Scrum Poker</h1>
@@ -18,7 +20,9 @@ export const Header: React.FC<HeaderProps> = ({ online, user, room, onLogout }) 
               <>
                 <p className='about-user'>{user}</p>
                 <p className='about-user'>Room: {room}</p>
-                <button onClick={onLogout}>logout</button>
+                <button title='Console' className='top-button code' onClick={onConsole}></button>
+                <button title='Settings' className='top-button gear' onClick={onSettings}></button>
+                <button title='Logout' className='top-button logout' onClick={onLogout}></button>
               </>
             ) : null}
 
