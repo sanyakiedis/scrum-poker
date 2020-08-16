@@ -8,7 +8,6 @@ interface CardProps {
 }
 
 export const Admin: React.FC<CardProps> = ({ users, onDelete }) => {
-
   return (
     <ul className='admin'>
       {Object.values(users).map(({ user }) => {

@@ -29,8 +29,10 @@ body {
 
 .console {
   position: absolute;
+  text-align: left;
   bottom: 0;
   left: 0;
+  background: #010a0a;
   color: #aaaaaa;
 }
 

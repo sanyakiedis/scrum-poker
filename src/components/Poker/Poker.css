@@ -20,6 +20,7 @@
     align-items: center;
     flex-wrap: wrap;
     margin-top: 25px;
+    max-height: 80%;
 }
 
 .slot {
@@ -31,4 +32,65 @@
     margin: 0;
     width: 100%;
     font-size: 12px;
+}
+
+.details {
+    position: absolute;
+    bottom: 170px;
+    width: 100%;
+    max-width: 1024px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #000000aa;
+    border: 1px solid #ffffff22;
+    border-radius: 10px;
+    padding: 32px;
+}
+
+.details > h2 {
+    margin: 0 0 16px;
+}
+
+.cols {
+    display: flex;
+    justify-content: space-around;
+    align-items: baseline;
+}
+
+.rate-group p {
+    margin: 0 0 4px;
+}
+
+.rate-group p > span {
+    font-weight: 800;
+}
+
+.rate-group ul {
+    text-align: left;
+    padding-left: 21px;
+    margin: 0;
+    font-size: 14px;
+}
+
+@media screen and (max-width: 1024px) {
+    .slot {
+        margin: 2px;
+    }
+
+    .card-button {
+        width: 40px;
+    }
+
+    .details > h2,
+    .rate-group ul {
+        display: none;
+    }
+
+    .details {
+        background-color: #000000dd;
+        padding: 16px;
+    }
+    .cols {
+        display: block;
+    }
 }

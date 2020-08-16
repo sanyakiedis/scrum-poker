@@ -82,3 +82,12 @@
 .top-button.code {
     background-image: url('/coding.svg');
 }
+
+@media screen and (max-width: 1024px) {
+    .header h1 {
+        display: none;
+    }
+    .header {
+        justify-content: center;
+    }
+}

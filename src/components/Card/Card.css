@@ -87,3 +87,16 @@
 .card.hidden:not(.unrated)::after {
     content: none;
 }
+
+@media screen and (max-width: 1024px) {
+    .card {
+        width: 60px;
+        height: 90px;   
+        font-size: 24px;
+        line-height: 90px;
+        margin: 0;
+    }
+    .card::after {
+        content: none !important;
+    }
+}
