@@ -59,6 +59,7 @@
     height: 18px;
     cursor: pointer;
     background-color: transparent;
+    background-repeat: no-repeat;
     border: none;
     background-size: contain;
 }
@@ -89,5 +90,12 @@
     }
     .header {
         justify-content: center;
+    }
+
+    .about-user {
+        overflow: hidden;
+        max-width: 200px;
+        white-space: nowrap;
+        text-overflow: ellipsis;
     }
 }

@@ -11,6 +11,7 @@ body {
   text-align: center;
   width: 100vw;
   height: 100vh;
+  height: calc(var(--vh, 1vh) * 100);
   overflow: hidden;
   background: #010a0a;
   background: linear-gradient(0deg, #010a0a 0%, #042805 100%);
