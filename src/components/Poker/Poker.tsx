@@ -55,10 +55,10 @@ export const Poker: React.FC<PokerProps> = ({ users, rate, onRate }) => {
           <div className="cols">
             {rates().map((r) => {
               return (
-                <div className="rate-group">
+                <div className="rate-group" key={r.rate}>
                   <p>Rate: <span>{r.rate}</span> – Users: <span>{r.users.length}</span></p>
                   <ul>
-                      {r.users.map((u) => <li>{u}</li>)}
+                      {r.users.map((u) => <li key={u}>{u}</li>)}
                   </ul>
                 </div>
               )
@@ -67,7 +67,7 @@ export const Poker: React.FC<PokerProps> = ({ users, rate, onRate }) => {
         </div>
       )}
       <div className='user-cards'>
-        {cards.map((card) => <div className='card-button'><Card key={card} isSelected={rate === card} rate={card} onSelect={onRate} /></div>)}
+        {cards.map((card) => <div className='card-button' key={card}><Card isSelected={rate === card} rate={card} onSelect={onRate} /></div>)}
       </div>
     </div>
   );

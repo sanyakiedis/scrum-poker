@@ -62,10 +62,11 @@ export const App: React.FC<{}> = () => {
     }
     setRoom(login.room);
     setUser(login.user);
+    setRate(null);
     sessionStorage.setItem('room', login.room);
     sessionStorage.setItem('user', login.user);
     localStorage.setItem('user', login.user);
-    ws.send(JSON.stringify({...login, rate: '', command: 'addUser'}));
+    ws.send(JSON.stringify({...login, rate: null, command: 'addUser'}));
   }, [rooms]);
 
   const onLogout = useCallback(() => {    

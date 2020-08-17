@@ -17,7 +17,7 @@
 .slots {
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     flex-wrap: wrap;
     margin-top: 25px;
     max-height: 80%;
