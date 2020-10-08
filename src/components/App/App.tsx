@@ -6,8 +6,8 @@ import { Admin } from './../Admin';
 import { Rooms } from './../../api';
 import './App.css';
 
-// const ws = new WebSocket(`ws://localhost:9000`);
-const ws = new WebSocket(`ws://18.196.71.228:9000`);
+const url = process.env.REACT_APP_WS || 'localhost';
+const ws = new WebSocket(`ws://${url}:9000`);
 
 const getUserName = () => {
   const userSession = sessionStorage.getItem('user');
@@ -106,6 +106,7 @@ export const App: React.FC<{}> = () => {
         onSettings={() => setAdmin(!showAdmin)}
         onConsole={() => setConsole(!showConsole)} />
       <div className='workspace'>
+        {url.toString()}
         {isOnline ? 
         !isAuth() ? <Login name={user} onLogin={onLogin} /> : <Poker onRate={onRate} rate={rate} users={currentRoom()} />
         : <p>We have a problems at server</p>
