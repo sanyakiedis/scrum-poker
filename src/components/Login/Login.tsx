@@ -25,7 +25,7 @@ export const Login: React.FC<LoginProps> = ({ onLogin, name }) => {
   }
 
   const onLoginHandler = () => {
-    onLogin({ room, user });
+    room !== '' && user !== '' && onLogin({ room, user });
   }
 
   return (

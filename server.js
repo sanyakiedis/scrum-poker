@@ -26,6 +26,9 @@ server.on('connection', ws => {
             case 'setRate':
                 setRate(data, isUserExist);
                 break;
+            case 'resetRates':
+                resetRates(data, isRoomExists);
+                break;
             default:
                 break;
         }
@@ -71,3 +74,9 @@ function setRate(msg, isUserExist) {
     }
 }
 
+function resetRates(msg, isRoomExists) {
+    if (isRoomExists) {
+        Object.values(rooms[msg.room]).forEach((user) => user.rate = null);
+        console.log(msg.user, 'at room', msg.room, 'reseted rates');
+    }
+}

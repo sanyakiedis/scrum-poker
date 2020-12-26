@@ -36,7 +36,11 @@ export const App: React.FC<{}> = () => {
 
   useEffect(() => {
     ws.onmessage = (msg) => {
-      setRooms(JSON.parse(msg.data));
+      const data = JSON.parse(msg.data);
+      setRooms(data);
+      if (room && room in data && user in data[room]) {
+        setRate(data[room][user].rate);
+      }
     };
 
     ws.onopen = () => {
@@ -52,7 +56,7 @@ export const App: React.FC<{}> = () => {
     };
   });
 
-  const currentRoom = useCallback(() => {    
+  const currentRoom = useCallback(() => {
     return room && room in rooms? rooms[room]: {};
   }, [rooms, room]);
 
@@ -95,6 +99,9 @@ export const App: React.FC<{}> = () => {
     ws.send(JSON.stringify({room, user: u, command: 'deleteUser'}));
   }, [room]);
 
+  const onReset = useCallback(() => {
+    ws.send(JSON.stringify({room, user, command: 'resetRates'}));
+  }, [room, user]);
 
   return (
     <div className="app">
@@ -106,13 +113,12 @@ export const App: React.FC<{}> = () => {
         onSettings={() => setAdmin(!showAdmin)}
         onConsole={() => setConsole(!showConsole)} />
       <div className='workspace'>
-        {url.toString()}
         {isOnline ? 
         !isAuth() ? <Login name={user} onLogin={onLogin} /> : <Poker onRate={onRate} rate={rate} users={currentRoom()} />
         : <p>We have a problems at server</p>
         }
       </div>
-      {showAdmin ? <Admin users={currentRoom()} onDelete={onDelete} /> : null}
+      {showAdmin ? <Admin users={currentRoom()} onDelete={onDelete} onReset={onReset} /> : null}
       {showConsole ? <div className="console">{consoleData()}</div> : null}
     </div>
   );
