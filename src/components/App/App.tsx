@@ -1,9 +1,9 @@
 import React, { useEffect, useState, useCallback } from 'react';
-import { Header } from './../Header';
-import { Login } from './../Login';
-import { Poker } from './../Poker';
-import { Admin } from './../Admin';
-import { Rooms } from './../../api';
+import { Header } from '../Header';
+import { Login } from '../Login';
+import { Poker } from '../Poker';
+import { Admin } from '../Admin';
+import { Rooms } from '../../api';
 import './App.css';
 
 const url = process.env.REACT_APP_WS || 'localhost';
