@@ -8,5 +8,5 @@ export interface Room {
 }
   
 export interface Rooms {
-    [detail: string]: Room
+    [detail: string]: Room;
 }

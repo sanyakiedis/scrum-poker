@@ -1,12 +1,35 @@
 const WebSocket = require('ws');
-const server = new WebSocket.Server({port: 9000});
+const fs = require('fs');
+const http = require('http');
+const WSserver = new WebSocket.Server({port: 9000});
+
+
+const hostname = '127.0.0.1';
+const port = 3000;
+
+const StaticServer = http.createServer((req, res) => {
+    const path = req.url !== '/' ? req.url : 'index.html';
+    fs.readFile(__dirname + '/build/' + path, function (err,data) {
+        if (err) {
+            res.writeHead(404);
+            res.end(JSON.stringify(err));
+            return;
+        }
+        res.writeHead(200);
+        res.end(data);
+    });
+});
+
+StaticServer.listen(port, hostname, (a) => {
+    console.log(`Server running at http://${hostname}:${port}/`);
+});
 
 console.log('server started');
 
 const rooms = {};
 
-server.on('connection', ws => {
-    console.log('New connection! Counter:', server.clients.size);
+WSserver.on('connection', ws => {
+    console.log('New connection! Counter:', WSserver.clients.size);
     console.log('-----------------');
     
     ws.on('message', message => {
@@ -32,7 +55,7 @@ server.on('connection', ws => {
             default:
                 break;
         }
-        server.clients.forEach(client => {
+        WSserver.clients.forEach(client => {
             client.send(JSON.stringify(rooms));
         });
         console.log('-----------------');

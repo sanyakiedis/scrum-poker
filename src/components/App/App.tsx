@@ -6,8 +6,7 @@ import { Admin } from '../Admin';
 import { Rooms } from '../../api';
 import './App.css';
 
-const url = process.env.REACT_APP_WS || 'localhost';
-const ws = new WebSocket(`ws://${url}:9000`);
+const ws = new WebSocket(`ws://${window.location.hostname}:9000`);
 
 const getUserName = () => {
   const userSession = sessionStorage.getItem('user');
