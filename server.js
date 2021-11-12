@@ -4,8 +4,8 @@ const http = require('http');
 const WSserver = new WebSocket.Server({port: 9000});
 
 
-const hostname = '127.0.0.1';
-const port = 3000;
+const hostname = process.env.HOST || '127.0.0.1';
+const port = process.env.PORT || 3000;
 
 const StaticServer = http.createServer((req, res) => {
     const path = req.url !== '/' ? req.url : 'index.html';
